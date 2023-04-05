@@ -1,5 +1,5 @@
 import { Flex, Text } from "@chakra-ui/react"
-import { ButtonPrimay } from "../Button"
+import { ButtonPrimay } from "../ButtonPrimary"
 
 export const Header = ()=>{
     return(
@@ -29,10 +29,9 @@ export const Header = ()=>{
                 </Text>
             </Flex>
             <ButtonPrimay 
-                backgroundColor='whiteAlpha.800'
-                width='3.3rem'
+                width='3rem'
                 position='absolute'
-                right='1.4rem'
+                right='1.5rem'
                 bottom='0.5rem'
             >
                 Login

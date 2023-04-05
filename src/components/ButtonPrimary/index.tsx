@@ -4,7 +4,7 @@ import { Button, ButtonProps } from "@chakra-ui/react"
 export const ButtonPrimay = ({children, ...props}: ButtonProps)=>{
     return(
         <Button
-            backgroundColor='whiteAlpha.700'
+            backgroundColor='whiteAlpha.800'
             {...props}
         >
             {children}

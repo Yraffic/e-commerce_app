@@ -1,23 +1,35 @@
-import { Box, Flex, Image, Text } from "@chakra-ui/react"
-import { ButtonPrimay } from "../Button"
+import { Flex, Image, Text } from "@chakra-ui/react"
 import { Product } from "../../types"
-
-
+import { ButtonPrimay } from "../ButtonPrimary"
+import { useContext } from "react"
+import { AppContext } from "../../context/AppContext"
+import { useNavigate } from "react-router-dom"
 
 export const CardItens = (
   {
+    id,
     name, 
     image, 
     description, 
-    value
-  }: Product 
+    value, 
+    item
+  }: Product
 ) => {
+  const navigate = useNavigate()
+  const {setItemClicked} = useContext(AppContext)
+
+  const handleClick = (item: Product)=>{
+    setItemClicked([item])
+    navigate('/detail')
+  }
+
   return (
     <Flex
       gap='0.5rem'
-      backgroundColor='blackAlpha.200'
+      backgroundColor='blackAlpha.500'
       alignItems='flex-start'
       flexDirection='column'
+      overflowX='auto'
       borderRadius='0.5rem'
       padding='0.5rem'
     >
@@ -36,11 +48,12 @@ export const CardItens = (
         </Text>
           <ButtonPrimay
             backgroundColor='teal.300'
+            onClick={()=> handleClick(item)}
           >
             Detail View
           </ButtonPrimay>
           <ButtonPrimay
-            backgroundColor='blackAlpha.300'
+            
           >
             Add to cart
           </ButtonPrimay>
@@ -48,8 +61,9 @@ export const CardItens = (
       </Flex>
       <Text 
         width='90%'
-        height='3rem'
+        whiteSpace='nowrap'
         overflow='hidden'
+        textOverflow='ellipsis'
       >
        {description}
       </Text>

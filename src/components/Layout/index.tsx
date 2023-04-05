@@ -9,6 +9,7 @@ export const Layout = ({children}: Props)=>{
         <Flex
             height='100vh'
             width='100vw'
+            overflow='auto'
             alignItems='center'
             flexDirection='column'
             justifyContent='space-between'
