@@ -1,18 +1,15 @@
 import { Flex } from "@chakra-ui/react"
 import { Footer } from "../Footer"
 import { Header } from "../Header"
+import { Props } from "../../types"
 
-interface HTMLElement {
-    children : any
-}
 
-export const Layout = ({children}: HTMLElement)=>{
+export const Layout = ({children}: Props)=>{
     return(
         <Flex
             height='100vh'
             width='100vw'
             alignItems='center'
-            justifyContent='space-between'
             flexDirection='column'
         >
             <Header />

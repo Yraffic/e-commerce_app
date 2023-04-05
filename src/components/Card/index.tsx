@@ -10,25 +10,33 @@ import {
     Stack, 
     Text 
 } from "@chakra-ui/react"
+import { Product } from "../../types"
 
-export const CardItens = ()=>{
+
+
+export const CardItens = (
+  {
+    name, 
+    image, 
+    description, 
+    value
+  }: Product
+  )=>{
     return(
         <Card maxW='sm'>
   <CardBody>
     <Image
-      src='https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60'
+      src={image}
       alt='Green double couch with wooden legs'
       borderRadius='lg'
     />
     <Stack mt='6' spacing='3'>
-      <Heading size='md'>Living room Sofa</Heading>
+      <Heading size='md'>{name}</Heading>
       <Text>
-        This sofa is perfect for modern tropical spaces, baroque inspired
-        spaces, earthy toned spaces and for people who love a chic design with a
-        sprinkle of vintage design.
+        {description}
       </Text>
       <Text color='blue.600' fontSize='2xl'>
-        $450
+        ${value}
       </Text>
     </Stack>
   </CardBody>
