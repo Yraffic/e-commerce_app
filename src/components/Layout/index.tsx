@@ -11,6 +11,9 @@ export const Layout = ({children}: Props)=>{
             width='100vw'
             alignItems='center'
             flexDirection='column'
+            justifyContent='space-between'
+            position='relative'
+            gap='0.5rem'
         >
             <Header />
             {children}

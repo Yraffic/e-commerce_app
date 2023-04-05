@@ -1,15 +1,5 @@
-import { 
-    Button, 
-    ButtonGroup, 
-    Card, 
-    CardBody, 
-    CardFooter, 
-    Divider, 
-    Heading, 
-    Image, 
-    Stack, 
-    Text 
-} from "@chakra-ui/react"
+import { Box, Flex, Image, Text } from "@chakra-ui/react"
+import { ButtonPrimay } from "../Button"
 import { Product } from "../../types"
 
 
@@ -20,37 +10,49 @@ export const CardItens = (
     image, 
     description, 
     value
-  }: Product
-  )=>{
-    return(
-        <Card maxW='sm'>
-  <CardBody>
-    <Image
-      src={image}
-      alt='Green double couch with wooden legs'
-      borderRadius='lg'
-    />
-    <Stack mt='6' spacing='3'>
-      <Heading size='md'>{name}</Heading>
-      <Text>
-        {description}
+  }: Product 
+) => {
+  return (
+    <Flex
+      gap='0.5rem'
+      backgroundColor='blackAlpha.200'
+      alignItems='flex-start'
+      flexDirection='column'
+      borderRadius='0.5rem'
+      padding='0.5rem'
+    >
+      <Text as='b'>
+        {name}
       </Text>
-      <Text color='blue.600' fontSize='2xl'>
-        ${value}
+      <Flex alignItems='center' gap='0.5rem'>
+        <Image
+          boxSize='9.3rem'
+          src={image}
+          alt={name}
+        />
+        <Flex flexDirection='column' gap='0.5rem' width='10rem'>
+          <Text>
+          $ {value.toFixed(2)}
+        </Text>
+          <ButtonPrimay
+            backgroundColor='teal.300'
+          >
+            Detail View
+          </ButtonPrimay>
+          <ButtonPrimay
+            backgroundColor='blackAlpha.300'
+          >
+            Add to cart
+          </ButtonPrimay>
+        </Flex>
+      </Flex>
+      <Text 
+        width='90%'
+        height='3rem'
+        overflow='hidden'
+      >
+       {description}
       </Text>
-    </Stack>
-  </CardBody>
-  <Divider />
-  <CardFooter>
-    <ButtonGroup spacing='2'>
-      <Button variant='solid' colorScheme='blue'>
-        Buy now
-      </Button>
-      <Button variant='ghost' colorScheme='blue'>
-        Add to cart
-      </Button>
-    </ButtonGroup>
-  </CardFooter>
-</Card>
-    )
+    </Flex>
+  )
 }

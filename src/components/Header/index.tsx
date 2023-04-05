@@ -5,7 +5,7 @@ export const Header = ()=>{
     return(
         <Flex
             backgroundColor='blackAlpha.500'
-            width='100vw'
+            width='100%'
             height='9rem'
             alignItems='center'
             justifyContent='center'
@@ -18,20 +18,22 @@ export const Header = ()=>{
             >
                 <Text 
                     as='b'
-                    fontSize='6xl'
+                    fontSize='2rem'
                 >
                   E-commerce
                 </Text>
                  <Text 
-                    fontSize='2xl'
+                    fontSize='1rem'
                 >
                   your variety store
                 </Text>
             </Flex>
             <ButtonPrimay 
                 backgroundColor='whiteAlpha.800'
+                width='3.3rem'
                 position='absolute'
-                right='1rem'
+                right='1.4rem'
+                bottom='0.5rem'
             >
                 Login
             </ButtonPrimay>

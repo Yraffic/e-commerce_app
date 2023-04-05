@@ -4,11 +4,11 @@ export const Footer = ()=>{
     return(
         <Flex
             backgroundColor='blackAlpha.500'
-            width='100vw'
-            height='6rem'
+            width='100%'
+            height='7rem'
             alignItems='center'
             justifyContent='center'
-            padding='0.5rem'
+            padding='1.5rem'
         >
             <Flex flexDirection='column'>
                 <Text>
