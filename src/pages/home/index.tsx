@@ -1,11 +1,11 @@
-import './App.css';
-
+import { CardItens } from "../../components/Card";
+import { Layout } from "../../components/Layout";
 
 export const Home = ()=>{
   return (
-    <div>
-      <div>oi</div>
-    </div>
+    <Layout>
+      <CardItens />
+    </Layout>
   );
 }
 
