@@ -39,14 +39,13 @@ export const Header = () => {
                 bottom='0.5rem'
             >
                 <ButtonPrimay
-                    width='3rem'
                     onClick={() => navigate('/cart')}
                 >
                     Cart
                 </ButtonPrimay>
                 <ButtonPrimay
-                    width='3rem'
                     onClick={() => navigate('/login')}
+                    fontSize='0.5rem'
                 >
                     Login
                 </ButtonPrimay>
