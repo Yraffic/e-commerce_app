@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom"
 import { ButtonPrimay } from "../../components/ButtonPrimary"
 import { Layout } from "../../components/Layout"
 
-export const Login = () => {
-   
+export const Register = () => {
+    
 
     return (
         <Layout>
@@ -19,13 +19,15 @@ export const Login = () => {
                 >
                     Login
                 </Text>
-                <Input variant='flushed' placeholder='Nome de Usuario' />
-                <Input variant='flushed' placeholder='Senha' />
+                <Input variant='flushed' placeholder='username' />
+                <Input variant='flushed' placeholder='email' />
+                <Input variant='flushed' placeholder='password' />
+                <Input variant='flushed' placeholder='confirm password' />
                 <ButtonPrimay>
-                    Entrar
+                    Register
                 </ButtonPrimay>
                 <Text>
-                    don't have an account? <NavLink style={{color:'blue'}} to='/register'> Register</NavLink>
+                    do you have an account?<NavLink style={{color:'blue'}} to='/login'> Login</NavLink>
                 </Text>
             </Flex>
         </Layout>

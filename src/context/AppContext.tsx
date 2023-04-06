@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react"
-import { IAppcontext, Product } from "../types"
+import { Category, IAppcontext, Product } from "../types"
 import { api } from "../services/api"
 
 
@@ -10,6 +10,17 @@ export const AppContextProvider = ({ children }: any) => {
    const [isLogged, setIsLogged] = useState<boolean>(false)
    const [listItem, setListItem] = useState<Product[]>([])
    const [itemClicked, setItemClicked] = useState<Product[]>([])
+   const [categorys, setCategorys] = useState<Category[]>([])
+
+
+  const getCategory = async()=>{
+    try {
+      const category = await api.get<Category[]>('/category')
+      return setCategorys(category.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const listProduct = async () => {
     try {
@@ -21,11 +32,23 @@ export const AppContextProvider = ({ children }: any) => {
     }
   }
 
+
   useEffect(() => {
     listProduct()
+    getCategory()
   }, [])
+
+  const values = { 
+    isLogged, 
+    setIsLogged, 
+    listItem, 
+    itemClicked, 
+    setItemClicked,
+    categorys 
+  }
+
    return (
-      <AppContext.Provider value={{ isLogged, setIsLogged, listItem, itemClicked, setItemClicked }}>
+      <AppContext.Provider value={values}>
          {children}
       </AppContext.Provider>
    )

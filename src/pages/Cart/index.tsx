@@ -1,7 +1,10 @@
+import { Layout } from "../../components/Layout"
+import { TableCart } from "../../components/TableCart"
+
 export const Cart = ()=>{
     return (
-        <div>
-            oi
-        </div>
+        <Layout>
+          <TableCart />
+        </Layout>
     )
 }

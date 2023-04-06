@@ -1,9 +1,9 @@
 import { Flex, Text } from "@chakra-ui/react"
 
-export const Footer = ()=>{
-    return(
+export const Footer = () => {
+    return (
         <Flex
-            backgroundColor='blackAlpha.500'
+            backgroundColor='teal.700'
             width='100%'
             height='7rem'
             alignItems='center'
@@ -12,7 +12,7 @@ export const Footer = ()=>{
         >
             <Flex flexDirection='column'>
                 <Text>
-                   Contac
+                    Contac
                 </Text>
             </Flex>
         </Flex>

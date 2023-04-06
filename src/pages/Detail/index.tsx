@@ -28,7 +28,7 @@ export const PageDetail = () => {
                     $ {valueFixed.toFixed(2)}
                 </Text>
                 <Flex justifyContent='center' gap='1rem' width='100%'>
-                    <ButtonPrimay backgroundColor='teal.300'>
+                    <ButtonPrimay backgroundColor='teal.700'>
                         Buy
                     </ButtonPrimay>
                     <ButtonPrimay >

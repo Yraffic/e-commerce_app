@@ -1,41 +1,56 @@
 import { Flex, Text } from "@chakra-ui/react"
 import { ButtonPrimay } from "../ButtonPrimary"
+import { useNavigate } from "react-router-dom"
 
-export const Header = ()=>{
-    return(
+export const Header = () => {
+    const navigate = useNavigate()
+    return (
         <Flex
-            backgroundColor='blackAlpha.500'
+            backgroundColor='teal.700'
             width='100%'
-            height='9rem'
             alignItems='center'
             justifyContent='center'
-            padding='1rem'
+            padding='2.5rem'
             position='relative'
         >
-            <Flex 
+            <Flex
                 flexDirection='column'
                 alignItems='center'
+                color='white'
+                onClick={()=> navigate('/home')}
+                cursor='pointer'
             >
-                <Text 
+                <Text
                     as='b'
                     fontSize='2rem'
                 >
-                  E-commerce
+                    E-commerce
                 </Text>
-                 <Text 
+                <Text
                     fontSize='1rem'
                 >
-                  your variety store
+                    your variety store
                 </Text>
             </Flex>
-            <ButtonPrimay 
-                width='3rem'
+            <Flex 
+                gap='0.5rem'
                 position='absolute'
-                right='1.5rem'
+                right='0.5rem'
                 bottom='0.5rem'
             >
-                Login
-            </ButtonPrimay>
+                <ButtonPrimay
+                    width='3rem'
+                    onClick={() => navigate('/cart')}
+                >
+                    Cart
+                </ButtonPrimay>
+                <ButtonPrimay
+                    width='3rem'
+                    onClick={() => navigate('/login')}
+                >
+                    Login
+                </ButtonPrimay>
+            </Flex>
         </Flex>
     )
 }

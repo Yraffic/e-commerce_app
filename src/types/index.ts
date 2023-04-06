@@ -19,4 +19,10 @@ export interface IAppcontext {
     listItem: Product[]
     itemClicked: Product[]
     setItemClicked: (itemCliked: Product[])=> void
+    categorys: Category[]
+}
+
+export interface Category {
+    id: number
+    name: string
 }
