@@ -3,7 +3,7 @@ import { ReactNode, useContext } from "react";
 import { CardItens } from "../../components/Card";
 import { Layout } from "../../components/Layout";
 import { AppContext } from "../../context/AppContext";
-import { Category, Product } from "../../types";
+import { Product } from "../../types";
 
 export const Home = () => {
   const { listItem } = useContext(AppContext)
@@ -31,7 +31,7 @@ export const Home = () => {
               name={item.name}
               description={item.description}
               image={item.image}
-              value={item.value / 100}
+              value={item.value}
               item={item}
             />
           )

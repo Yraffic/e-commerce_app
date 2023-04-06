@@ -4,10 +4,10 @@ import { ButtonPrimay } from "../ButtonPrimary"
 import { ChangeEvent, useContext, useState } from "react"
 import { AppContext } from "../../context/AppContext"
 import { useNavigate } from "react-router-dom"
+import { transformToUSD } from "../../utils/Currency"
 
 export const CardItens = (
   {
-    id,
     name,
     image,
     description,
@@ -50,7 +50,7 @@ export const CardItens = (
         />
         <Flex flexDirection='column' gap='0.5rem' width='10rem'>
           <Text>
-            $ {value.toFixed(2)}
+            {transformToUSD(value)}
           </Text>
           <ButtonPrimay
             backgroundColor='teal.700'

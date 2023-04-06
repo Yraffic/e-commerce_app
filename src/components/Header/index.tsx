@@ -1,6 +1,6 @@
 import { Flex, Text } from "@chakra-ui/react"
-import { ButtonPrimay } from "../ButtonPrimary"
 import { useNavigate } from "react-router-dom"
+import { ButtonPrimay } from "../ButtonPrimary"
 
 export const Header = () => {
     const navigate = useNavigate()

@@ -4,11 +4,11 @@ import { ButtonPrimay } from "../../components/ButtonPrimary"
 import { Layout } from "../../components/Layout"
 import { AppContext } from "../../context/AppContext"
 import { useNavigate } from "react-router-dom"
+import { transformToUSD } from "../../utils/Currency"
 
 export const PageDetail = () => {
     const { itemClicked } = useContext(AppContext)
     const navigate = useNavigate()
-    const valueFixed = itemClicked[0].value/100
     
     return (
         <Layout>
@@ -25,7 +25,7 @@ export const PageDetail = () => {
                     {itemClicked[0].description}
                 </Text>
                 <Text marginBottom='3rem'>
-                    $ {valueFixed.toFixed(2)}
+                    {transformToUSD(itemClicked[0].value)}
                 </Text>
                 <Flex justifyContent='center' gap='1rem' width='100%'>
                     <ButtonPrimay backgroundColor='teal.700'>
