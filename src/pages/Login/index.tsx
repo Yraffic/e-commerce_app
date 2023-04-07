@@ -6,7 +6,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import { api } from "../../services/api";
 import { setItem } from "../../utils/Storege";
-import { Usuario } from "../../types";
+import { IUsuario } from "../../types";
 
 interface IFormInputs {
     email: string
@@ -22,9 +22,9 @@ export const Login = () => {
 
     const onSubmit: SubmitHandler<IFormInputs> = async (data) => {
         try {
-            const userArray: Usuario[] = []
+            const userArray: IUsuario[] = []
             const user = await
-                api.get<Usuario[]>(
+                api.get<IUsuario[]>(
                     `/users?email=${data.email}&password=${data.password}`
                 )
             if (user.data.length === 0) {

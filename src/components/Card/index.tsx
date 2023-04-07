@@ -1,5 +1,5 @@
 import { Flex, Image, Input, Text } from "@chakra-ui/react"
-import { Product } from "../../types"
+import { IProduct } from "../../types"
 import { ButtonPrimay } from "../ButtonPrimary"
 import { ChangeEvent, useContext, useState } from "react"
 import { AppContext } from "../../context/AppContext"
@@ -15,7 +15,7 @@ export const CardItens = (
     description,
     value,
     item
-  }: Product
+  }: IProduct
 ) => {
   const navigate = useNavigate()
   const { setItemClicked, update, setUpdate} = useContext(AppContext)
@@ -26,12 +26,12 @@ export const CardItens = (
   }
   
 
-  const handleClick = (item: Product) => {
+  const handleClick = (item: IProduct) => {
     setItemClicked([item])
     navigate('/detail')
   }
 
-  const handleAddToCart = async(item: Product)=>{
+  const handleAddToCart = async(item: IProduct)=>{
     try {
       if(!getItem("isLogged")){
         return alert('it is necessary to be logged in')

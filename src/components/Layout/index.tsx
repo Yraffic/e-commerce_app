@@ -1,10 +1,10 @@
 import { Flex } from "@chakra-ui/react"
 import { Footer } from "../Footer"
 import { Header } from "../Header"
-import { Props } from "../../types"
+import { IProps } from "../../types"
 
 
-export const Layout = ({children}: Props)=>{
+export const Layout = ({children}: IProps)=>{
     return(
         <Flex
             height='100vh'

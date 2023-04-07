@@ -1,34 +1,30 @@
 import { ReactNode } from "react"
 
-export interface Product {
+export interface IProduct {
     id: number
     name: string
     description: string
     value: number
     image: string
     categoryId?: number
-    item: Product
+    item: IProduct
 }
 
-export interface Props {
+export interface IProps {
     children: ReactNode 
 }
 
 export interface IAppcontext {
     update: boolean
     setUpdate: ( isLoggedIn: boolean)=> void
-    listItem: Product[]
-    itemClicked: Product[]
-    setItemClicked: (itemCliked: Product[])=> void
+    listItem: IProduct[]
+    itemClicked: IProduct[]
+    setItemClicked: (itemCliked: IProduct[])=> void
     setValueSelect: (value: string) => void
 }
 
-export interface Category {
-    id: number
-    name: string
-}
 
-export interface Usuario {
+export interface IUsuario {
     id: number
     email: string
     password:string

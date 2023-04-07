@@ -4,21 +4,22 @@ import { useNavigate } from "react-router-dom"
 import { ButtonPrimay } from "../../components/ButtonPrimary"
 import { Layout } from "../../components/Layout"
 import { AppContext } from "../../context/AppContext"
-import { transformToUSD } from "../../utils/Currency"
 import { api } from "../../services/api"
+import { transformToUSD } from "../../utils/Currency"
 
 export const PageDetail = () => {
     const { itemClicked } = useContext(AppContext)
     const navigate = useNavigate()
 
-    const handleBuy = async(id: number)=>{
+    const handleBuy = async (id: number) => {
         try {
             const buyItem = await api.get(`/carts/${id}`)
 
-            if(buyItem.status === 200){
+            if (buyItem.status === 200) {
                 alert('purchased item')
             }
-            const product = await api.delete(`/carts/${id}`)
+
+            await api.delete(`/carts/${id}`)
 
         } catch (error) {
             alert('error serve')
@@ -43,15 +44,15 @@ export const PageDetail = () => {
                     {transformToUSD(itemClicked[0].value)}
                 </Text>
                 <Flex justifyContent='center' gap='1rem' width='100%'>
-                    <ButtonPrimay 
+                    <ButtonPrimay
                         backgroundColor='teal.700'
-                        onClick={()=> handleBuy(itemClicked[0].id)}
+                        onClick={() => handleBuy(itemClicked[0].id)}
                     >
                         Buy
                     </ButtonPrimay>
                     <ButtonPrimay
                         backgroundColor='red.400'
-                        onClick={()=> navigate('/home')}
+                        onClick={() => navigate('/home')}
                     >
                         to go back
                     </ButtonPrimay>
