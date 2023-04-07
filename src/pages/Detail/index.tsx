@@ -1,15 +1,30 @@
 import { Flex, Image, Text } from "@chakra-ui/react"
 import { useContext } from "react"
+import { useNavigate } from "react-router-dom"
 import { ButtonPrimay } from "../../components/ButtonPrimary"
 import { Layout } from "../../components/Layout"
 import { AppContext } from "../../context/AppContext"
-import { useNavigate } from "react-router-dom"
 import { transformToUSD } from "../../utils/Currency"
+import { api } from "../../services/api"
 
 export const PageDetail = () => {
     const { itemClicked } = useContext(AppContext)
     const navigate = useNavigate()
-    
+
+    const handleBuy = async(id: number)=>{
+        try {
+            const buyItem = await api.get(`/carts/${id}`)
+
+            if(buyItem.status === 200){
+                alert('purchased item')
+            }
+            const product = await api.delete(`/carts/${id}`)
+
+        } catch (error) {
+            alert('error serve')
+        }
+    }
+
     return (
         <Layout>
             <Flex
@@ -28,11 +43,11 @@ export const PageDetail = () => {
                     {transformToUSD(itemClicked[0].value)}
                 </Text>
                 <Flex justifyContent='center' gap='1rem' width='100%'>
-                    <ButtonPrimay backgroundColor='teal.700'>
+                    <ButtonPrimay 
+                        backgroundColor='teal.700'
+                        onClick={()=> handleBuy(itemClicked[0].id)}
+                    >
                         Buy
-                    </ButtonPrimay>
-                    <ButtonPrimay >
-                        add to cart
                     </ButtonPrimay>
                     <ButtonPrimay
                         backgroundColor='red.400'

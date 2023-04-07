@@ -1,9 +1,16 @@
 import { Flex, Text } from "@chakra-ui/react"
 import { useNavigate } from "react-router-dom"
 import { ButtonPrimay } from "../ButtonPrimary"
+import { getItem, remove } from "../../utils/Storege"
 
 export const Header = () => {
     const navigate = useNavigate()
+
+    const handleExit = ()=>{
+        remove()
+        navigate('/login')
+    }
+
     return (
         <Flex
             backgroundColor='teal.700'
@@ -17,7 +24,7 @@ export const Header = () => {
                 flexDirection='column'
                 alignItems='center'
                 color='white'
-                onClick={()=> navigate('/home')}
+                onClick={() => navigate('/home')}
                 cursor='pointer'
             >
                 <Text
@@ -32,7 +39,7 @@ export const Header = () => {
                     your variety store
                 </Text>
             </Flex>
-            <Flex 
+            <Flex
                 gap='0.5rem'
                 position='absolute'
                 right='0.5rem'
@@ -40,15 +47,26 @@ export const Header = () => {
             >
                 <ButtonPrimay
                     onClick={() => navigate('/cart')}
+                    fontSize='0.9rem'
                 >
                     Cart
                 </ButtonPrimay>
-                <ButtonPrimay
-                    onClick={() => navigate('/login')}
-                    fontSize='0.5rem'
-                >
-                    Login
-                </ButtonPrimay>
+                {
+                    getItem("isLogged") ?
+                        <ButtonPrimay
+                            onClick={() => handleExit()}
+                            fontSize='0.9rem'
+                        >
+                            exit
+                        </ButtonPrimay>
+                        :
+                        <ButtonPrimay
+                            onClick={() => navigate('/login')}
+                            fontSize='0.9rem'
+                        >
+                            Login
+                        </ButtonPrimay>
+                }
             </Flex>
         </Flex>
     )

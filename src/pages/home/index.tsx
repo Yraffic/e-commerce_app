@@ -6,17 +6,29 @@ import { AppContext } from "../../context/AppContext";
 import { Product } from "../../types";
 
 export const Home = () => {
-  const { listItem } = useContext(AppContext)
+  const { listItem, setValueSelect } = useContext(AppContext)
+
+  
+
   return (
     <Layout>
       <Flex width='90%' gap='1rem'>
-        <Select variant='flushed' defaultValue='All' width='35%' >
-            <option value='All'>All</option>
-            <option value='mens items'>men's items</option>
-            <option value='female items'>female items</option>
-            <option value='electronics'>electronics</option>
+        <Select 
+          variant='flushed' 
+          defaultValue='/products' 
+          width='35%'
+          onChange={(e)=> setValueSelect(e.target.value)}
+        >
+            <option value='/products'>All</option>
+            <option value='/products?categoryID=1'>men's items</option>
+            <option value='/products?categoryID=2'>female items</option>
+            <option value='/products?categoryID=3'>electronics</option>
         </Select>
-        <Input variant='flushed' placeholder="digite" />
+        <Input 
+          variant='flushed' 
+          placeholder="digite" 
+          
+        />
       </Flex>
       <Flex
         width='90vw'
@@ -33,6 +45,7 @@ export const Home = () => {
               image={item.image}
               value={item.value}
               item={item}
+              categoryId={item.categoryId}
             />
           )
         })}

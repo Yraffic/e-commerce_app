@@ -1,48 +1,51 @@
 import { createContext, useEffect, useState } from "react"
 import { api } from "../services/api"
-import { Category, IAppcontext, Product } from "../types"
+import { IAppcontext, Product } from "../types"
 
 
 
 export const AppContext = createContext({} as IAppcontext)
 
 export const AppContextProvider = ({ children }: any) => {
-  const [isLogged, setIsLogged] = useState<boolean>(false)
+  const [update, setUpdate] = useState<boolean>(false)
   const [listItem, setListItem] = useState<Product[]>([])
   const [itemClicked, setItemClicked] = useState<Product[]>([])
-  const [categorys, setCategorys] = useState<Category[]>([])
-
-  const getCategory = async () => {
-    try {
-      const category = await api.get<Category[]>('/category')
-      return setCategorys(category.data)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
+  const [valueSelect, setValueSelect] = useState('/products')
+  
+  
   const listProduct = async () => {
     try {
-      const products = await api.get('/products')
+      /* let filter = '/products' */
+
+      /* if(valueSelect === '1'){
+        filter ='/products?categoryID=1'
+      } else if (valueSelect === '2'){
+        filter = '/products?categoryID=2'
+      } else if(valueSelect === '3'){
+        filter = '/products?categoryID=3'
+      } */
+
+      const products = await api.get(`${valueSelect}`)
 
       setListItem(products.data)
     } catch (error) {
+      alert('error serve')
       console.log(error)
     }
   }
 
   useEffect(() => {
     listProduct()
-    getCategory()
-  }, [])
+  }, [valueSelect])
 
   const values = {
-    isLogged,
-    setIsLogged,
+    update,
+    setUpdate,
     listItem,
     itemClicked,
     setItemClicked,
-    categorys
+    setValueSelect ,
+    setListItem
   }
 
   return (
